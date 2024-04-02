@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { CartContex } from "../store/stopping-cart-context";
 
-export default function Cart({ onUpdateItemQuantity }) {
+export default function Cart() {
 
   // const cartCtx = useContext(CartContex);
-  const {items} = useContext(CartContex)
+  const {items, updateItemQuantity} = useContext(CartContex)
 
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -27,11 +27,11 @@ export default function Cart({ onUpdateItemQuantity }) {
                   <span> ({formattedPrice})</span>
                 </div>
                 <div className="cart-item-actions">
-                  <button onClick={() => onUpdateItemQuantity(item.id, -1)}>
+                  <button onClick={() => updateItemQuantity(item.id, -1)}>
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => onUpdateItemQuantity(item.id, 1)}>
+                  <button onClick={() => updateItemQuantity(item.id, 1)}>
                     +
                   </button>
                 </div>
